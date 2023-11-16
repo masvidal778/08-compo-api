@@ -1,5 +1,6 @@
 <script>
 import {defineComponent, ref} from 'vue'
+import useCounter from "@/composables/useCounter";
 
 export default defineComponent({
   name: "Counter",
@@ -7,13 +8,12 @@ export default defineComponent({
   //emits: [] aniria aquí
   setup() {
 
-    //ref embolcalla la variable en un objecte reactiu, par això el value
-    const counter = ref(5)
+    const {counter, increase, decrease} = useCounter(25)
 
-    return {
+    return{
       counter,
-      increase: () => counter.value++,
-      decrease: () => counter.value--
+      increase,
+      decrease
     }
 
   }
